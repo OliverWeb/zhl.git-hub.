@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Pool</title>
+  <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+  <link href="css/lib/bootstrap-reset.css" rel="stylesheet">
+  <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link href="css/lib/style.css" rel="stylesheet">
+  <link href="css/lib/style-responsive.css" rel="stylesheet">
+  <link href="css/layout.css" rel="stylesheet">
+  <link href="css/pool-name-set.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/lib/html5shiv.js"></script>
+  <script src="js/lib/respond.min.js"></script>
+  <![endif]-->
+  <style>
+    a{
+      color: #797979;
+    }
+    a:hover{
+      color: #797979;
+    }
+    #editable-sample a{
+        display: inline-block;
+        width: 100%;
+    }
+    .editable-table td:not(.hovetit):hover,.editable-table th:not(.hovetit):hover{
+      background-color: #D1D3D3!important;
+    }
+    .editable-table td a,.editable-table th a{
+      display: block;
+      height: 39px;
+      line-height: 39px;
+      
+    }
+    .editable-table td,.editable-table th{
+      height: 39px;
+      padding: 0!important;
+    }
+    td{
+      cursor: hand;
+    }
+    pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+    .string { color: green; }
+    .number { color: darkorange; }
+    .boolean { color: blue; }
+    .null { color: magenta; }
+    .key { color: red; }
+  </style>
+</head>
+<body>
+  <section id="container" class="">
+    <header class="header white-bg">
+      <a href="index.html" class="logo">
+        NODE-<span style="font-size: 18px">后台管理系统=&gt;POOL</span>
+      </a>
+      <div class="top-nav" >
+        <ul class="nav  pull-right top-menu">
+          <div class="dropdown" >
+					<span class="dropdown-toggle" data-toggle="dropdown" data-target="#" >
+						<button type="button" class="btn btn-default btn-sm personal" >
+					<span class="glyphicon glyphicon-user"></span>
+          <span class="username">User</span>
+					</button>
+					</span>
+            <ul class="dropdown-menu loginOut">
+              <a href="login.html">
+                <li>
+                  <span class="glyphicon glyphicon-off"></span>退出
+                </li>
+              </a>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </header>
+    <aside>
+      <div id="sidebar" class="nav-collapse">
+        <ul class="sidebar-menu" id="nav-accordion">
+          <li class="sub-menu">
+            <a href="index.html">
+              <i class="fa fa-laptop">
+              </i>
+              <span>
+                   POOL
+                 </span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book">
+              </i>
+              <span>
+                   NODE
+                 </span>
+            </a>
+            <ul class="sub node-sub">
+              <li>
+                <a href="physical-node-manager.html">
+                  物理节点管理
+                </a>
+              </li>
+              <li>
+                <a href="mcrouterList.html">
+                  Mcrouter节点
+                </a>
+              </li>
+              <li>
+                <a href="memcachedList.html">
+                  Memcache节点
+                </a>
+              </li>
+              <li>
+                <a href="getnode.html">
+                  获取缓存数据
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- 图表 -->
+          <li class="sub-menu">
+            <a href="echart.html">
+              <i class=" fa fa-bar-chart-o">
+              </i>
+              <span>
+                   Charts
+                 </span>
+            </a>
+          </li>
+      
+        </ul>
+      </div>
+    </aside>
+    <section id="main-content">
+      <section class="wrapper site-min-height">
+        <section class="panel">
+          <div class="panel-body marginTop">
+            <div class="adv-table editable-table pool-table">
+              <table class="table   table-bordered"  align="center">
+                <caption class="mcrouter_title" style="font-size: 16px!important;">分池配置：</caption>
+                <tbody>
+                <tr>
+                  <td  class="hovetit" style="font-weight: bold">池配置</td>
+                  <td  class="pool_name">
+                    <a href="pool_name_set.html" title="please click this">设置</a>
+                  </td>
+                  <td class="poolViewDetail viewDetail"><a href="#" style="width: 100%">查看明细</a></td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="table   table-bordered" id="editable-sample" align="center">
+                <caption class="mcrouter_title" style="font-size: 16px!important">Mcrouter配置：</caption>
+                <tbody>
+                <tr>
+                  <th class="hovetit">常规模式</th>
+                  <th class="hovetit">复制池</th>
+                  <th class="hovetit">冷暖存预热</th>
+                </tr>
+                  <tr class="">
+                    <form action="">
+                      <td class="hovetit">
+                        是否生效
+                        <input type="radio"  class="normal" data-type="normal" name="id" value="1">
+                      </td>
+                      <td class="hovetit">
+                        是否生效
+                        <input type="radio" class="reliabilityshadow" data-type="reliabilityshadow" name="id" value="1">
+                      </td>
+                      <td class="hovetit">
+                        是否生效
+                        <input type="radio" class="cold-warm" data-type="cold-warm" name="id" value="1">
+                      </td>
+                    </form>
+                  </tr>
+                  <tr class="">
+                    <td class="general">
+                      <a href="pool_general_set.html">设置</a>
+                    </td>
+                    <td class="">
+                      <a href="pool_copy_set.html">设置</a>
+                    </td>
+                    <td class="">
+                      <a href="cold_warm_set.html">设置</a>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="generalViewDetail viewDetail"><a href="#" style="width: 100%">查看明细</a></td>
+                    <td class="copyViewDetail viewDetail"><a href="#" style="width: 100%">查看明细</a></td>
+                    <td class="coldWarmViewDetail viewDetail"><a href="#" style="width: 100%">查看明细</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" style="font-weight:bold;">提示信息</h4>
+          </div>
+          <div class="modal-body">
+            <div class="tip-message" style="font-size: 16px;text-align: center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel" style="font-weight:bold;">查看信息</h4>
+          </div>
+          <div class="modal-body">
+            <pre id="result">
+           
+            </pre>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger"  data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="js/lib/jquery-1.8.3.min.js"></script>
+  <script src="js/lib/bootstrap.min.js"></script>
+  <script src="js/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="js/lib/jquery.scrollTo.min.js"></script>
+  <script src="js/lib/jquery.nicescroll.js"></script>
+  <script src="js/lib/respond.min.js"></script>
+  <script src="js/lib/common-scripts.js"></script>
+  <script src="js/index.js"></script>
+  <script>
+    $(function () {
+	    /*监控浏览器的窗口 start*/
+	    var whdef = 100/1920;// 表示750的设计图,使用50PX的默认值
+	    var wH = window.innerHeight;// 手机窗口的高度
+	    var wW = window.innerWidth;// 手机窗口的宽度
+	    var rem = wW * whdef;// 以默认比例值乘以当前窗口宽度,得到该宽度下的相应FONT-SIZE值
+	    $('html').css('font-size', rem + "px");
+	    $(window).resize(function () { // 绑定到窗口的这个事件中
+		    var whdef = 100/1920;// 表示1920的设计图,使用100PX的默认值
+		    var wH = window.innerHeight;// 当前窗口的高度
+		    var wW = window.innerWidth;// 当前窗口的宽度
+		    var rem = wW * whdef;// 以默认比例值乘以当前窗口宽度,得到该宽度下的相应FONT-SIZE值
+		    console.log(wW);
+		    $('html').css('font-size', rem + "px");
+	    });
+	    /*监控浏览器的窗口 end*/
+	    /*将获取cookie进行设置cookie*/
+	    function getCookie(name) {
+		    var arr = document.cookie.split('; ');
+		    var i = 0;
+		    for (i = 0; i < arr.length; i++) {
+			    var arr2 = arr[i].split('=');
+			    if (arr2[0] == name) {
+				    var getC = decodeURIComponent(arr2[1]);
+				    return getC;
+			    }
+		    }
+		    return '';
+	    }
+	    $(".username").html(getCookie("username"));
+	    /*将获取cookie进行设置cookie结束*/
+    });
+    function syntaxHighlight(json) {
+	    if (typeof json != 'string') {
+		    json = JSON.stringify(json, undefined, 2);
+	    }
+	    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+		    var cls = 'number';
+		    if (/^"/.test(match)) {
+			    if (/:$/.test(match)) {
+				    cls = 'key';
+			    } else {
+				    cls = 'string';
+			    }
+		    } else if (/true|false/.test(match)) {
+			    cls = 'boolean';
+		    } else if (/null/.test(match)) {
+			    cls = 'null';
+		    }
+		    return '<span class="' + cls + '">' + match + '</span>';
+	    });
+    }
+    $(".viewDetail").click(function(){
+    	var confignameData;
+    	if($(this).hasClass("poolViewDetail")){
+		     $("#myModalLabel").html("池配置");
+		    confignameData="pools";
+      }else if($(this).hasClass("generalViewDetail")){
+		    $("#myModalLabel").html("常规模式");
+		    confignameData="normal";
+      }else if($(this).hasClass("copyViewDetail")){
+		    $("#myModalLabel").html("复制模式");
+		    confignameData="reliabilityshadow";
+      }else if($(this).hasClass("coldWarmViewDetail")){
+		    $("#myModalLabel").html("冷暖存预热");
+		    confignameData="cold-warm";
+      }
+      $.ajax({
+        url:"./json/json.json",                  //pageContext + "/mcrouter/getmcrouterconfigDetail"
+        type:"get",
+        data:"configname="+confignameData,
+        success:function(res){
+        	if(res.status=="success"){
+		        $('#result').html(syntaxHighlight(res.message));
+		        $('#viewModal').modal('show');
+          }else{
+		        $('.tip-message').html(res.message);
+		        $('#messageModal').modal('show');
+		        setTimeout(function () {
+			        $('#messageModal').modal('hide');
+		        }, 1000);
+          }
+        },error:function(){
+		      $('.tip-message').html("服务器异常");
+		      $('#messageModal').modal('show');
+		      setTimeout(function () {
+			      $('#messageModal').modal('hide');
+		      }, 1000);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
